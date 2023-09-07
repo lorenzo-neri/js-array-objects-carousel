@@ -16,6 +16,8 @@ Bonus 2:
 E se volessi un bottone per invertire la "direzione" del carosello?
 */
 
+let activeSlide = 0;
+
 //create an objects array
 const slides = [
     {path: './assets/img/01.webp'},
@@ -25,13 +27,10 @@ const slides = [
     {path: './assets/img/05.webp'},
 ]
 
-let activeSlide = 0;
-
 // select the dom elements
 const sliderImagesEl = document.querySelector('.slider .images')
 const prevEl = document.querySelector('.prev')
 const nextEl = document.querySelector('.next')
-
 
 const thumbsElement = document.querySelector('.thumbnails')
 
@@ -40,20 +39,16 @@ const thumbsElement = document.querySelector('.thumbnails')
 slides.forEach((path, i) => {
 
     const slidePath = slides[i];
-    console.log(slidePath);
+    const slideMarkup = `<img class="${activeSlide === i ? 'active' : ''}" src="${slidePath['path']}" alt="">`;
+    console.log(slideMarkup);
+    sliderImagesEl.insertAdjacentHTML('beforeend', slideMarkup);
     
+
     const thumbPath = slides[i];
     const thumbMarkup = `<img class="thumb ${activeSlide === i ? 'active' : ''}" src="${thumbPath['path']}" alt="">`;
     console.log(thumbMarkup);
-    
     thumbsElement.insertAdjacentHTML('beforeend', thumbMarkup);
 
-    // for each slide we create the markup
-    const slideMarkup = `<img class="${activeSlide === i ? 'active' : ''}" src="${slidePath['path']}" alt="">`;
-    console.log(slideMarkup);
-    
-    
-    sliderImagesEl.insertAdjacentHTML('beforeend', slideMarkup);
 });
 
 const slidesImages = document.querySelectorAll('.slider .images > img')
@@ -75,7 +70,6 @@ nextEl.addEventListener('click', function () {
     // remove the active class from the active thumb
     currentThumb.classList.remove('active')
 
-
     // activeSlide = 4
 
     if (activeSlide === slidesImages.length - 1) {
@@ -85,7 +79,6 @@ nextEl.addEventListener('click', function () {
         // increment the activeSlide of 1
         activeSlide++
     }
-
 
     // select the next slide
     const nextSlide = slidesImages[activeSlide]
@@ -107,7 +100,6 @@ nextEl.addEventListener('click', function () {
 })
 
 // intercept click on the prev icon
-
 
 // activeSlide = 0
 prevEl.addEventListener('click', function () {
