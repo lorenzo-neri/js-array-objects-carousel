@@ -59,7 +59,6 @@ slides.forEach((path, i) => {
 const slidesImages = document.querySelectorAll('.slider .images > img')
 console.log(slidesImages);
 
-
 // intercept click on the next icon 
 nextEl.addEventListener('click', function () {
     console.log('cliccato su next');
