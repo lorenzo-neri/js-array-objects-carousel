@@ -32,8 +32,6 @@ const sliderImagesEl = document.querySelector('.slider .images')
 const prevEl = document.querySelector('.prev')
 const nextEl = document.querySelector('.next')
 
-const slidesImages = document.querySelectorAll('.slider .images > img')
-console.log(slidesImages);
 
 const thumbsElement = document.querySelector('.thumbnails')
 
@@ -58,6 +56,8 @@ slides.forEach((path, i) => {
     sliderImagesEl.insertAdjacentHTML('beforeend', slideMarkup);
 });
 
+const slidesImages = document.querySelectorAll('.slider .images > img')
+console.log(slidesImages);
 
 
 // intercept click on the next icon 
