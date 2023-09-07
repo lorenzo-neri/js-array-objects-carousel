@@ -32,6 +32,11 @@ const sliderImagesEl = document.querySelector('.slider .images')
 const prevEl = document.querySelector('.prev')
 const nextEl = document.querySelector('.next')
 
+const slidesImages = document.querySelectorAll('.slider .images > img')
+console.log(slidesImages);
+
+const thumbsElement = document.querySelector('.thumbnails')
+
 /* Print all images into the dom */
 // loop over the slides 
 slides.forEach((path, i) => {
@@ -39,45 +44,20 @@ slides.forEach((path, i) => {
     const slidePath = slides[i];
     console.log(slidePath);
     
+    const thumbPath = slides[i];
+    const thumbMarkup = `<img class="thumb ${activeSlide === i ? 'active' : ''}" src="${thumbPath['path']}" alt="">`
+    console.log(thumbMarkup);
+    
+    thumbsElement.insertAdjacentHTML('beforeend', thumbMarkup)
+
     // for each slide we create the markup
-    const slideMarkup = `<img class="${activeSlide === i ? 'active' : ''}" src="${slidePath}" alt="">`
-    //console.log(slideMarkup);
+    const slideMarkup = `<img class="${activeSlide === i ? 'active' : ''}" src="${slidePath['path']}" alt="">`
+    console.log(slideMarkup);
+    
     
     sliderImagesEl.insertAdjacentHTML('beforeend', slideMarkup)
 });
-/* for (let i = 0; i < slides.length; i++) {
 
-} */
-
-/* 
-Al click dell'utente sulle frecce, il programma cambierà l’immagine attiva, che quindi verrà visualizzata al posto della precedente.
-*/
-
-const slidesImages = document.querySelectorAll('.slider .images > img')
-console.log(slidesImages);
-
-/* 
-BONUS 1:
-Aggiungere il ciclo infinito del carosello. Ovvero se è attiva la prima immagine e l'utente clicca la freccia per andare all’immagine precedente, dovrà comparire l’ultima immagine dell’array e viceversa.
-*/
-
-/* 
-BONUS 2:
-Aggiungere la visualizzazione di tutte le thumbnails sulla destra dell’immagine grande attiva, 
-come nello screenshot proposto. Tutte le miniature avranno un layer di opacità scura, tranne quella corrispondente all’immagine attiva, che invece avrà un bordo colorato. 
-Al click delle frecce, oltre al cambio di immagine attiva, gestire il cambio di miniatura attiva.
-*/
-
-const thumbsElement = document.querySelector('.thumbnails')
-
-for (let i = 0; i < slides.length; i++) {
-    const thumbPath = slides[i];
-    const thumbMarkup = `<img class="thumb ${activeSlide === i ? 'active' : ''}" src="${thumbPath}" alt="">`
-    //console.log(thumbMarkup);
-
-    thumbsElement.insertAdjacentHTML('beforeend', thumbMarkup)
-
-}
 
 
 // intercept click on the next icon 
