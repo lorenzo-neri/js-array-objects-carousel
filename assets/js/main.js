@@ -45,17 +45,17 @@ slides.forEach((path, i) => {
     console.log(slidePath);
     
     const thumbPath = slides[i];
-    const thumbMarkup = `<img class="thumb ${activeSlide === i ? 'active' : ''}" src="${thumbPath['path']}" alt="">`
+    const thumbMarkup = `<img class="thumb ${activeSlide === i ? 'active' : ''}" src="${thumbPath['path']}" alt="">`;
     console.log(thumbMarkup);
     
-    thumbsElement.insertAdjacentHTML('beforeend', thumbMarkup)
+    thumbsElement.insertAdjacentHTML('beforeend', thumbMarkup);
 
     // for each slide we create the markup
-    const slideMarkup = `<img class="${activeSlide === i ? 'active' : ''}" src="${slidePath['path']}" alt="">`
+    const slideMarkup = `<img class="${activeSlide === i ? 'active' : ''}" src="${slidePath['path']}" alt="">`;
     console.log(slideMarkup);
     
     
-    sliderImagesEl.insertAdjacentHTML('beforeend', slideMarkup)
+    sliderImagesEl.insertAdjacentHTML('beforeend', slideMarkup);
 });
 
 
